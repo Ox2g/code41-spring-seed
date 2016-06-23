@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.1.xsd" default-autowire="byName">
+
+    <bean id="scheduleManagerFactory" class="com.taobao.pamirs.schedule.strategy.TBScheduleManagerFactory"
+          init-method="init">
+        <property name="ip" value="expresswaybill_worker"/>
+        <property name="zkConfig">
+            <map>
+                <entry key="zkConnectString" value="${mvn.tbSchedule.zkConnectString}"/>
+                <entry key="rootPath" value="${mvn.tbSchedule.rootPath}"/>
+                <entry key="zkSessionTimeout" value="${mvn.tbSchedule.zkSessionTimeout}"/>
+                <entry key="userName" value="${mvn.tbSchedule.userName}"/>
+                <entry key="password" value="${mvn.tbSchedule.password}"/>
+                <entry key="isCheckParentPath" value="${mvn.thSchedule.isCheckParentPath}"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="demoSchedule" class="me.code41.seed.worker.schedule.DemoSchedule"/>
+
+</beans>
