@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * 服务加载器 
- * User: wenjun 
+ * User: code41
  * Date: 2015-03-10 
  * Time: 10:50
  */

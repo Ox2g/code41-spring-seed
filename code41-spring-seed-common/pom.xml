@@ -13,14 +13,6 @@
     <name>code41-spring-seed-common</name>
     <dependencies>
         <dependency>
-            <groupId>code41.me</groupId>
-            <artifactId>code41-spring-seed-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>code41.me</groupId>
-            <artifactId>code41-spring-seed-dao</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
         </dependency>

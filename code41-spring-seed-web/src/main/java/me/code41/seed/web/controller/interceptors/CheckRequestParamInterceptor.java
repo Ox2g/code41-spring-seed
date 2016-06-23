@@ -1,8 +1,6 @@
 package me.code41.seed.web.controller.interceptors;
 
-import com.jd.o2o.lp.common.utils.MD5Encrypt;
-import com.jd.o2o.lp.common.utils.Md5Config;
-import com.jd.o2o.lp.string.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -20,12 +18,12 @@ public class CheckRequestParamInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
         String body = request.getParameter("body");
-        if(StringUtils.isNotEmpty(body)){
+        if (StringUtils.isNotEmpty(body)) {
             String clientOs = request.getParameter("platCode");
             request.setAttribute("requestBody", body);
             request.setAttribute("clientOs", clientOs);
             return true;
-        }else{
+        } else {
             String requestBody = getPostData(request);
             String apiVersion = request.getParameter("apiVersion");
             String clientOs = request.getParameter("clientOs");
@@ -46,25 +44,27 @@ public class CheckRequestParamInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
     }
+
     /**
      * 获取post请求的body体
+     *
      * @param request
      * @return
      */
-    private String getPostData(HttpServletRequest request){
-        StringBuffer sb = new StringBuffer() ;
-        try{
+    private String getPostData(HttpServletRequest request) {
+        StringBuffer sb = new StringBuffer();
+        try {
             InputStream is = request.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader br = new BufferedReader(isr);
-            String s = "" ;
-            while((s=br.readLine())!=null){
-                sb.append(s) ;
+            String s = "";
+            while ((s = br.readLine()) != null) {
+                sb.append(s);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        String result =sb.toString();
+        String result = sb.toString();
         return result;
     }
 
@@ -96,42 +96,48 @@ public class CheckRequestParamInterceptor extends HandlerInterceptorAdapter {
     /**
      * 检查参数（不检测非法符号）
      * 暂时只对saveCrash使用
-     * @param param
+     *
+     * @param apiVersion
+     * @param clientOs
+     * @param clientVersion
+     * @param channel
+     * @param signKey
+     * @param requestBody
      * @return useCode clientCode version 全部非空返回true，否则false
      */
     public boolean checkParamIgnoreIllegalParam(String apiVersion, String clientOs, String clientVersion, String channel,
                                                 String signKey, String requestBody) {
 //		logger.debug("apiVersion=" + apiVersion + "  ; clientOs=" + clientOs + "  ; clientVersion=" + clientVersion);
 
-        if (StringUtils.isBlank(apiVersion)
-                || StringUtils.isBlank(clientOs)
-                || StringUtils.isBlank(clientVersion)
-                || StringUtils.isBlank(channel)) {
-            return false;
-        }
-
-        //md5加密监测
-        String md5Config = Md5Config.getProperty("IS_MD5_OPEN");
-        if (null != md5Config && "true".equalsIgnoreCase(md5Config) && StringUtils.isNotBlank(requestBody)) {
-            String md5Key = Md5Config.getProperty("MD5_" + clientOs.toUpperCase(), "default_md5_key");
-
-            String md5Local = MD5Encrypt.encrypt(requestBody + md5Key);
+//        if (StringUtils.isBlank(apiVersion)
+//                || StringUtils.isBlank(clientOs)
+//                || StringUtils.isBlank(clientVersion)
+//                || StringUtils.isBlank(channel)) {
+//            return false;
+//        }
+//
+//        //md5加密监测
+//        String md5Config = Md5Config.getProperty("IS_MD5_OPEN");
+//        if (null != md5Config && "true".equalsIgnoreCase(md5Config) && StringUtils.isNotBlank(requestBody)) {
+//            String md5Key = Md5Config.getProperty("MD5_" + clientOs.toUpperCase(), "default_md5_key");
+//
+//            String md5Local = MD5Encrypt.encrypt(requestBody + md5Key);
 //			logger.debug("*************************requestBody={}, md5Key={}", requestBody, md5Key);
 //			logger.debug("================MD5 check local={},  request={}", md5Local, signKey);
 
-            if (!md5Local.equalsIgnoreCase(signKey)) {
+//            if (!md5Local.equalsIgnoreCase(signKey)) {
 //				logger.warn("MD5 check warn: local=" + md5Local + "；request=" + signKey
 //						+ "；apiVersion=" + apiVersion
 //						+ "  ; clientOs=" + clientOs
 //						+ "  ; clientVersion=" + clientVersion);
 //				logger.warn("request body:{}", requestBody);
                 // clientOs=MOCK 是测试用的
-                if ("MOCK".equals(clientOs)) {
-                    return true;
-                }
-                return false;
-            }
-        }
+//                if ("MOCK".equals(clientOs)) {
+//                    return true;
+//                }
+//                return false;
+//            }
+//        }
 
         return true;
     }

@@ -12,7 +12,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>code41.me</groupId>
+			<groupId>me.code41</groupId>
 			<artifactId>code41-spring-seed-domain</artifactId>
 		</dependency>
 		<dependency>

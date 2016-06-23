@@ -143,6 +143,14 @@
             <groupId>me.code41</groupId>
             <artifactId>code41-spring-seed-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>me.code41</groupId>
+            <artifactId>code41-spring-seed-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>me.code41</groupId>
+            <artifactId>code41-spring-seed-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

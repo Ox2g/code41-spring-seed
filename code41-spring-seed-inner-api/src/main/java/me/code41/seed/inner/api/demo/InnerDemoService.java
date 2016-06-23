@@ -6,5 +6,10 @@ import me.code41.seed.domain.entity.DemoEntity;
  * Created by code41 on 2016/6/23.
  */
 public interface InnerDemoService {
-    DemoEntity doSomething();
+    /**
+     * Inner Demo Method
+     *
+     * @return
+     */
+    DemoEntity demoMethodInner();
 }

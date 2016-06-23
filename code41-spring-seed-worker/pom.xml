@@ -9,7 +9,7 @@
 
 	<artifactId>code41-spring-seed-worker</artifactId>
 	<name>code41-spring-seed-worker</name>
-	<description>众包运单worker</description>
+	<description>worker-module</description>
 
 	<dependencies>
 		<dependency>
@@ -96,7 +96,7 @@
 			<artifactId>aspectjweaver</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>om.taobao.pamirs.schedule</groupId>
+			<groupId>com.taobao.pamirs.schedule</groupId>
 			<artifactId>tbschedule</artifactId>
 		</dependency>
 		<!-- log begin -->
