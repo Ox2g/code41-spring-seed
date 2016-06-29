@@ -18,7 +18,7 @@
     <properties>
         <build.file.encoding>UTF-8</build.file.encoding>
         <disruptor.version>3.3.2</disruptor.version>
-        <tbschedule.version>3.2.16</tbschedule.version>
+        <tbschedule.version>3.2.6</tbschedule.version>
         <xstream.version>1.4.5</xstream.version>
         <commons-lang.version>2.6</commons-lang.version>
         <!--spring-->
@@ -56,22 +56,11 @@
         <!--test-->
         <junit.version>4.10</junit.version>
         <!-- util:json -->
-        <ali-fastjson>1.2.1</ali-fastjson>
+        <ali-fastjson>1.2.13</ali-fastjson>
         <jackson.version>1.9.7</jackson.version>
         <!-- util:joda.time-->
         <joda-time.version>2.3</joda-time.version>
     </properties>
-
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <url>http://artifactory.360buy-develop.com/libs-releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <url>http://artifactory.360buy-develop.com/libs-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>
@@ -232,6 +221,16 @@
 
             <!-- web base -->
             <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-core-asl</artifactId>
+                <version>1.9.13</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>1.9.13</version>
+            </dependency>
+            <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>servlet-api</artifactId>
                 <version>${servlet.version}</version>
@@ -259,123 +258,6 @@
                 <version>${wsdl4j.version}</version>
             </dependency>
 
-            <!-- cxf -->
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-core</artifactId>
-                <version>${cxf.version}</version>
-                <exclusions>
-                    <!-- use javax.mail.mail instead -->
-                    <exclusion>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-javamail_1.4_spec</artifactId>
-                    </exclusion>
-                    <!-- use javax.activation.activation instead -->
-                    <exclusion>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-activation_1.1_spec</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-frontend-jaxws</artifactId>
-                <version>${cxf.version}</version>
-                <exclusions>
-                    <!-- see above -->
-                    <exclusion>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-javamail_1.4_spec</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-activation_1.1_spec</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-                <version>${cxf.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>wsdl4j</groupId>
-                        <artifactId>wsdl4j</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-transports-http</artifactId>
-                <version>${cxf.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-databinding-jaxb</artifactId>
-                <version>${cxf.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-databinding-aegis</artifactId>
-                <version>${cxf.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-ws-security</artifactId>
-                <version>${cxf.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-ws-addr</artifactId>
-                <version>${cxf.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-ws-policy</artifactId>
-                <version>${cxf.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-ws-rm</artifactId>
-                <version>${cxf.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-bundle-jaxrs</artifactId>
-                <version>${cxf.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.eclipse.jetty</groupId>
-                        <artifactId>jetty-server</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-jdk14</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-stax-api_1.0_spec</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-annotation_1.0_spec</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-activation_1.1_spec</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-javamail_1.4_spec</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-servlet_2.5_spec</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <!-- cxf end -->
-
             <!-- rest -->
             <dependency>
                 <groupId>javax.ws.rs</groupId>
@@ -400,11 +282,6 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${ali-fastjson}</version>
-            </dependency>
-            <dependency>
-                <groupId>jackson-all</groupId>
-                <artifactId>jackson-all</artifactId>
-                <version>${jackson.version}</version>
             </dependency>
             <!--util:joda.time-->
             <dependency>
@@ -475,7 +352,7 @@
             <dependency>
                 <groupId>com.taobao.pamirs.schedule</groupId>
                 <artifactId>tbschedule</artifactId>
-                <version>${tbschedule.version}</version>
+                <version>3.2.10</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.springframework</groupId>
@@ -497,6 +374,12 @@
                 <groupId>com.thoughtworks.xstream</groupId>
                 <artifactId>xstream</artifactId>
                 <version>${xstream.version}</version>
+            </dependency>
+            <!-- dubbo -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>2.5.3</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

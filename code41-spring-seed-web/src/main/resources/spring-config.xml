@@ -13,4 +13,6 @@
         </property>
     </bean>
 
+    <import resource="spring-config-consumer.xml"/>
+
 </beans>

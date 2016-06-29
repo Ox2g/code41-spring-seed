@@ -16,6 +16,9 @@ public class DemoServiceFacade implements DemoService {
      */
     @Override
     public DemoDTO demoMethod() {
-        return null;
+        DemoDTO demoDTO = new DemoDTO();
+        demoDTO.setName("demo");
+        demoDTO.setId(1);
+        return demoDTO;
     }
 }

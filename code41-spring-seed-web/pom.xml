@@ -28,6 +28,20 @@
             <artifactId>code41-spring-seed-common</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- web basic dependency -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -40,8 +54,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>jackson-all</groupId>
-            <artifactId>jackson-all</artifactId>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
         </dependency>
         <!-- log begin -->
         <dependency>

@@ -43,6 +43,14 @@
             <groupId>me.code41</groupId>
             <artifactId>code41-spring-seed-inner-api</artifactId>
         </dependency>
+
+        <!-- dubbo -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+
+        <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -129,7 +137,6 @@
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
         </dependency>
-        <!-- upm lib end -->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -138,18 +145,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>me.code41</groupId>
-            <artifactId>code41-spring-seed-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>me.code41</groupId>
-            <artifactId>code41-spring-seed-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>me.code41</groupId>
-            <artifactId>code41-spring-seed-api</artifactId>
         </dependency>
     </dependencies>
 

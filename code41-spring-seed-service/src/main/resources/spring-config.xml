@@ -26,5 +26,6 @@
 
     <import resource="spring-config-executor.xml"/>
     <import resource="spring-config-datasource-dbcp.xml"/>
+    <import resource="spring-config-provider.xml"/>
 
 </beans>
